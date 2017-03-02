@@ -21,11 +21,11 @@ The steps of this project are the following:
 ## Camera Calibration
 
 The code cells referenced by the following names in the
-[IPython notebook](advancedLaneFinding.ipynb) is used in this section.
+[IPython notebook](advancedLaneFinding.html) is used in this section.
 
-  - Find Chessboard Corners On A Number Of Calibration Images
-  - Calibrate Camera
-  - Test Camera Calibration With Images
+  - **Find Chessboard Corners On A Number Of Calibration Images**
+  - **Calibrate Camera**
+  - **Test Camera Calibration With Images**
 
 I start by preparing "object points", which will be the (x, y, z) coordinates of
 the chessboard corners in the world. Here I am assuming the chessboard is fixed
@@ -37,16 +37,22 @@ all chessboard corners in a test image. `imgpoints` will be appended with the
 successful chessboard detection.
 
 
-I then used the output `objpoints` and `imgpoints` to compute the camera calibration and distortion coefficients using the `cv2.calibrateCamera()` function.  I applied this distortion correction to the test image using the `cv2.undistort()` function and obtained these result:
+I then used the output `objpoints` and `imgpoints` to compute the camera
+calibration and distortion coefficients using the `cv2.calibrateCamera()`
+function.  I applied this distortion correction to the test image using the
+`cv2.undistort()` function and obtained these result:
 
 | Original Image | Undistorted Image | Original Image | Undistorted Image
 |:---:|:---:|:---:|:---:|
 | ![](camera_cal/calibration7.jpg) | ![](output_images/calibration7.jpg) | ![](test_images/straight_lines1.jpg) | ![](output_images/straight_lines1.jpg) |
 
-###Pipeline (single images)
+## Pipeline (single images)
 
-####2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
-I used a combination of color and gradient thresholds to generate a binary image (thresholding steps at lines # through # in `another_file.py`).  Here's an example of my output for this step.  (note: this is not actually from one of the test images)
+I used the sobel X gradient thresholds _anded_ with the HLS color space S
+channel threshold to generate a binary image in the .  Here's an
+example of my output for this step.  (note: this is not actually from one of the
+test images)
+
 
 | sobel x | hls s | x s AND color | x s AND
 |:---:|:---:|:---:|:---:|
@@ -55,7 +61,12 @@ I used a combination of color and gradient thresholds to generate a binary image
 
 ####3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
-The code for my perspective transform includes a function called `warper()`, which appears in lines 1 through 8 in the file `example.py` (output_images/examples/example.py) (or, for example, in the 3rd code cell of the IPython notebook).  The `warper()` function takes as inputs an image (`img`), as well as source (`src`) and destination (`dst`) points.  I chose the hardcode the source and destination points in the following manner:
+The code for my perspective transform includes a function called `warper()`,
+which appears in lines 1 through 8 in the file `example.py`
+(output_images/examples/example.py) (or, for example, in the 3rd code cell of
+the IPython notebook).  The `warper()` function takes as inputs an image
+(`img`), as well as source (`src`) and destination (`dst`) points.  I chose the
+hardcode the source and destination points in the following manner:
 
 ```
 src = np.float32(
