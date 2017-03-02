@@ -1,0 +1,1 @@
+while inotifywait -e close_write advancedLaneFinding.ipynb; do jupyter nbconvert advancedLaneFinding.ipynb; done

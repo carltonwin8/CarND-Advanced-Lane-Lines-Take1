@@ -1,0 +1,1 @@
+while inotifywait -e close_write README_base.md; do ./readme local; done

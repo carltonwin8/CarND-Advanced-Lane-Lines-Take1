@@ -46,7 +46,7 @@ The following images shows the test results.
 
 | Original Image | Undistorted Image | Original Image | Undistorted Image
 |:---:|:---:|:---:|:---:|
-| ![](camera_cal/calibration7.jpg) | ![](output_images/calibration7.jpg) | ![](test_images/straight_lines1.jpg) | ![](output_images/straight_lines1.jpg) |
+| ![](camera_cal/calibration1.jpg) | ![](output_images/calibration1.jpg) | ![](test_images/straight_lines1.jpg) | ![](output_images/straight_lines1.jpg) |
 
 ## Edge Detect
 
