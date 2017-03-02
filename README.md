@@ -2,10 +2,8 @@
 
 The pre-fork README can be found [here](README_ori.md).
 This README contains my notes for the project.
-The IPython notebooks used for the code can be found [here](advancedLaneFinding.ipynb).
-Every code cell, in the notebook, is proceeded with a markup cell that provides
-a title for the following cell and will be used to reference the cell in the
-following document.
+The IPython notebooks can be found [here as ipynb](advancedLaneFinding.ipynb) and
+[here as html](http://carltonwin8.github.io/CarND-Advanced-Lane-Lines).
 
 The steps of this project are the following:
 
@@ -20,14 +18,6 @@ The steps of this project are the following:
 
 ## Camera Calibration
 
-The code cells referenced by the following names in the
-[IPython notebook](advancedLaneFinding.html) is used in this section.
-
-  - [Find Chessboard Corners On A Number Of Calibration Images](http://carltonwin8.github.io/CarND-Advanced-Lane-Lines#chessboard)
-  - **Find Chessboard Corners On A Number Of Calibration Images**
-  - **Calibrate Camera**
-  - **Test Camera Calibration With Images**
-
 I start by preparing "object points", which will be the (x, y, z) coordinates of
 the chessboard corners in the world. Here I am assuming the chessboard is fixed
 on the (x, y) plane at z=0, such that the object points are the same for each
@@ -36,31 +26,42 @@ calibration image. Thus, `objp` is just a replicated array of coordinates, and
 all chessboard corners in a test image. `imgpoints` will be appended with the
 (x, y) pixel position of each of the corners in the image plane with each
 successful chessboard detection.
-
+The code for these operation is in the
+[Find Chessboard Corners On A Number Of Calibration Images](http://carltonwin8.github.io/CarND-Advanced-Lane-Lines#chessboard)
+cell.
 
 I then used the output `objpoints` and `imgpoints` to compute the camera
 calibration and distortion coefficients using the `cv2.calibrateCamera()`
-function.  I applied this distortion correction to the test image using the
+function.
+The code for these operation is in the
+[Calibarte Camera](http://carltonwin8.github.io/CarND-Advanced-Lane-Lines#calibrate)
+cell.
+
+I applied this distortion correction to the test image using the
 `cv2.undistort()` function and obtained these result:
+The code for these operation is in the
+[Test Camera Calibration With Images](http://carltonwin8.github.io/CarND-Advanced-Lane-Lines#testCalibration)
+cell.
+The following images shows the test results.
 
 | Original Image | Undistorted Image | Original Image | Undistorted Image
 |:---:|:---:|:---:|:---:|
 | ![](camera_cal/calibration7.jpg) | ![](output_images/calibration7.jpg) | ![](test_images/straight_lines1.jpg) | ![](output_images/straight_lines1.jpg) |
 
-## Pipeline (single images)
+## Edge Detect
 
 I used the sobel X gradient thresholds _anded_ with the HLS color space S
-channel threshold to generate a binary image in the .  Here's an
-example of my output for this step.  (note: this is not actually from one of the
-test images)
-
+channel threshold to generate a binary image.
+The code for these operation is in the
+[Threshold binary image creating via color transform and gradient](http://carltonwin8.github.io/CarND-Advanced-Lane-Lines#thresholds)
+cell.
+The following images shows the results from this step.
 
 | sobel x | hls s | x s AND color | x s AND
 |:---:|:---:|:---:|:---:|
 | ![](output_images/binary_sobel_x.jpg) | ![](output_images/binary_hls_s.jpg) | ![](output_images/binary_sx_color.jpg) | ![](output_images/binary_sx.jpg) |
 
-
-####3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
+## Perspective Transform
 
 The code for my perspective transform includes a function called `warper()`,
 which appears in lines 1 through 8 in the file `example.py`
