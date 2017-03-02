@@ -1,0 +1,45 @@
+#!/usr/bin/env python
+
+import os
+import shutil
+import sys
+
+def usage(saw=None):
+    print("Error! Need to enter push or pull on command line.")
+    if saw: print("Saw " + saw)
+    sys.exit(-1)
+
+if len(sys.argv) < 2: usage();
+push = "push"
+pull = "pull"
+pushPull = sys.argv[1]
+if pushPull != push and pushPull != pull: usage();
+
+pub = "../pub"
+alff = "advancedLaneFinding.html"
+index = "index.html"
+alfd = "advancedLaneFinding_files"
+pubf = os.path.join(pub,index)
+pubd = os.path.join(pub,alfd)
+if pushPull == push:
+    if os.path.isdir(pub):
+        shutil.rmtree(pub)
+    os.makedirs(pub)
+    shutil.copyfile(alff,pubf)
+    if os.path.isdir(alfd):
+        shutil.copytree(alfd,pubd)
+    else:
+        print("Skipping non-existent directory " + alfd)
+    sys.exit(0)
+
+if pushPull == pull:
+    if not os.path.isdir(pub):
+        print("Error! Did not find " + pub)
+        sys.exit(-1)
+    shutil.copyfile(pubf,index)
+    if os.path.isdir(alfd):
+        shutil.rmtree(alfd)
+    if os.path.isdir(pubd):
+        shutil.copytree(pubd,alfd)
+    else: 
+        print("Skipping non-existent directory " + pubd)

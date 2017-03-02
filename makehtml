@@ -1,0 +1,3 @@
+#!/bin/bash
+# convert jupyter notebook to html without embedding the images
+jupyter nbconvert --config mycfg.py
