@@ -23,6 +23,7 @@ The steps of this project are the following:
 The code cells referenced by the following names in the
 [IPython notebook](advancedLaneFinding.html) is used in this section.
 
+  - [Find Chessboard Corners On A Number Of Calibration Images](advancedLaneFinding.html#chessboard)
   - **Find Chessboard Corners On A Number Of Calibration Images**
   - **Calibrate Camera**
   - **Test Camera Calibration With Images**
