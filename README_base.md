@@ -63,14 +63,13 @@ The following images shows the results from this step.
 
 ## Perspective Transform
 
-The code for my perspective transform includes a function called `warper()`,
-which appears in lines 1 through 8 in the file `example.py`
-(output_images/examples/example.py) (or, for example, in the 3rd code cell of
-the IPython notebook).  The `warper()` function takes as inputs an image
-(`img`), as well as source (`src`) and destination (`dst`) points.  I chose the
-hardcode the source and destination points in the following manner:
+The code for this operation is in the
+[Perspective Transform](http://carltonwin8.github.io/CarND-Advanced-Lane-Lines#perspectiveTransform)
+cell.
+The `cv2.getPerspectiveTransform()` function creates a transform from the
+source (`src`) and destination (`dst`) points noted below.
 
-```
+```python
 src = np.float32(
     [[(img_size[0] / 2) - 55, img_size[1] / 2 + 100],
     [((img_size[0] / 6) - 10), img_size[1]],
@@ -92,9 +91,11 @@ This resulted in the following source and destination points:
 | 1127, 720     | 960, 720      |
 | 695, 460      | 960, 0        |
 
-I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
+The transform was tested on the images noted below to verify that the lines appear parallel in the warped image.
 
-![alt text][image4]
+| not transformed | transformed | sobel x OR'ed hls s
+|:---:|:---:|:---:|
+| ![](test_images/straight_lines1.jpg) | ![](output_images/straight_lines1_transform.jpg) | ![](output_images/binary_sx_transform.jpg) |
 
 ####4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
