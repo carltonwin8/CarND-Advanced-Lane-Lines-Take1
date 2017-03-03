@@ -3,7 +3,7 @@
 The pre-fork README can be found [here](README_ori.md).
 This README contains my notes for the project.
 The IPython notebooks can be found [here as ipynb](advancedLaneFinding.ipynb) and
-[here as html](http://localhost:3000/advancedLaneFinding.html).
+[here as html](http://carltonwin8.github.io/CarND-Advanced-Lane-Lines).
 
 The steps of this project are the following:
 
@@ -27,20 +27,20 @@ all chessboard corners in a test image. `imgpoints` will be appended with the
 (x, y) pixel position of each of the corners in the image plane with each
 successful chessboard detection.
 The code for these operation is in the
-[Find Chessboard Corners On A Number Of Calibration Images](http://localhost:3000/advancedLaneFinding.html#chessboard)
+[Find Chessboard Corners On A Number Of Calibration Images](http://carltonwin8.github.io/CarND-Advanced-Lane-Lines#chessboard)
 cell.
 
 I then used the output `objpoints` and `imgpoints` to compute the camera
 calibration and distortion coefficients using the `cv2.calibrateCamera()`
 function.
 The code for these operation is in the
-[Calibarte Camera](http://localhost:3000/advancedLaneFinding.html#calibrate)
+[Calibarte Camera](http://carltonwin8.github.io/CarND-Advanced-Lane-Lines#calibrate)
 cell.
 
 I applied this distortion correction to the test image using the
 `cv2.undistort()` function and obtained these result:
 The code for these operation is in the
-[Test Camera Calibration With Images](http://localhost:3000/advancedLaneFinding.html#testCalibration)
+[Test Camera Calibration With Images](http://carltonwin8.github.io/CarND-Advanced-Lane-Lines#testCalibration)
 cell.
 The following images shows the test results.
 
@@ -53,7 +53,7 @@ The following images shows the test results.
 I used the sobel X gradient thresholds _anded_ with the HLS color space S
 channel threshold to generate a binary image.
 The code for these operation is in the
-[Threshold binary image creating via color transform and gradient](http://localhost:3000/advancedLaneFinding.html#thresholds)
+[Threshold binary image creating via color transform and gradient](http://carltonwin8.github.io/CarND-Advanced-Lane-Lines#thresholds)
 cell.
 The following images shows the results from this step.
 
@@ -64,7 +64,7 @@ The following images shows the results from this step.
 ## Perspective Transform
 
 The code for this operation is in the
-[Perspective Transform](http://localhost:3000/advancedLaneFinding.html#perspectiveTransform)
+[Perspective Transform](http://carltonwin8.github.io/CarND-Advanced-Lane-Lines#perspectiveTransform)
 cell.
 The `cv2.getPerspectiveTransform()` function creates a transform from the
 source (`src`) and destination (`dst`) points noted below.
